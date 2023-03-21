@@ -169,6 +169,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtPhone.setBounds(119, 145, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtPhone);
 		txtPhone.setColumns(10);
@@ -183,6 +184,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtRice.setBounds(119, 165, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtRice);
 		txtRice.setColumns(10);
@@ -197,6 +199,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtBonus.setBounds(119, 190, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtBonus);
 		txtBonus.setColumns(10);
@@ -213,6 +216,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtTax.setBounds(356, 105, 99, 20);
 		frmMotorPhEmployee.getContentPane().add(txtTax);
 		txtTax.setColumns(10);
@@ -229,6 +233,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtInsurance.setBounds(356, 125, 99, 20);
 		frmMotorPhEmployee.getContentPane().add(txtInsurance);
 		txtInsurance.setColumns(10);
@@ -285,6 +290,7 @@ public class Payroll {
 				
 			}
 		});
+		
 		btnCompute.setBounds(284, 240, 86, 38);
 		frmMotorPhEmployee.getContentPane().add(btnCompute);
 		
@@ -302,10 +308,10 @@ public class Payroll {
 				txtInsurance.setText("(10%)");
 				txtInsurance.setForeground(Color.GRAY);
 				lblNetResult.setText("...");
-				lblGrossResult.setText("...");
-				
+				lblGrossResult.setText("...");	
 			}
 		});
+		
 		btnReset.setBounds(381, 240, 86, 38);
 		frmMotorPhEmployee.getContentPane().add(btnReset);
 	}

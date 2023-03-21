@@ -40,7 +40,6 @@ public class Employee {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	
 	public void initialize() {
 		frmMotorPhEmployee = new JFrame();
 		frmMotorPhEmployee.setTitle("Motor PH: Employee App - Claricia, J. A.");

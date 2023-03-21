@@ -16,7 +16,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Payroll {
-
 	public JFrame frmMotorPhEmployee;
 	private JTextField txtBasicSalary;
 	private JTextField txtClothing;
@@ -51,7 +50,6 @@ public class Payroll {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
 		//Composition of frame (Label, Button, Text field, etc.)
 		frmMotorPhEmployee = new JFrame();
 		frmMotorPhEmployee.setTitle("Motor PH: Employee App - Claricia, J. A.");
@@ -184,6 +182,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtRice.setBounds(119, 165, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtRice);
 		txtRice.setColumns(10);
@@ -278,6 +277,7 @@ public class Payroll {
 				lblGrossResult.setText(String.valueOf(gross));
 			}
 		});
+		
 		btnCompute.setBounds(269, 240, 86, 38);
 		frmMotorPhEmployee.getContentPane().add(btnCompute);
 		

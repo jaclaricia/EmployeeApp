@@ -1,7 +1,6 @@
 package EmployeeApp;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
@@ -26,7 +25,6 @@ public class Payroll {
 	private JTextField txtBonus;
 	private JTextField txtTax;
 	private JTextField txtInsurance;
-
 	/**
 	 * Launch the application.
 	 */
@@ -42,7 +40,6 @@ public class Payroll {
 			}
 		});
 	}
-
 	/**
 	 * Create the application.
 	 */
@@ -159,6 +156,7 @@ public class Payroll {
 		frmMotorPhEmployee.getContentPane().add(txtClothing);
 		txtClothing.setColumns(10);
 		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtPhone = new JTextField();
 		txtPhone.addKeyListener(new KeyAdapter() {
 			@Override
@@ -169,10 +167,13 @@ public class Payroll {
 				}
 			}
 		});
+		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtPhone.setBounds(119, 145, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtPhone);
 		txtPhone.setColumns(10);
 		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtRice = new JTextField();
 		txtRice.addKeyListener(new KeyAdapter() {
 			@Override
@@ -187,6 +188,7 @@ public class Payroll {
 		frmMotorPhEmployee.getContentPane().add(txtRice);
 		txtRice.setColumns(10);
 		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtBonus = new JTextField();
 		txtBonus.addKeyListener(new KeyAdapter() {
 			@Override
@@ -197,10 +199,12 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtBonus.setBounds(119, 190, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtBonus);
 		txtBonus.setColumns(10);
 		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtTax = new JTextField();
 		txtTax.setForeground(Color.GRAY);
 		txtTax.addKeyListener(new KeyAdapter() {
@@ -212,10 +216,12 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtTax.setBounds(356, 105, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtTax);
 		txtTax.setColumns(10);
 		
+		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtInsurance = new JTextField();
 		txtInsurance.setForeground(Color.GRAY);
 		txtInsurance.addKeyListener(new KeyAdapter() {
@@ -227,6 +233,7 @@ public class Payroll {
 				}
 			}
 		});
+		
 		txtInsurance.setBounds(356, 125, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtInsurance);
 		txtInsurance.setColumns(10);
@@ -249,7 +256,7 @@ public class Payroll {
 		btnCompute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Converts textfields datatype to int, computation purposes
+				//Converts textfields datatype to int for computation purposes
 				double basicSalary = Integer.parseInt(txtBasicSalary.getText());
 				double clothing = Integer.parseInt(txtClothing.getText());
 				double phone = Integer.parseInt(txtPhone.getText());
@@ -266,13 +273,9 @@ public class Payroll {
 				double net = basicSalary + clothing + phone + rice + bonus ;
 				double gross = net - (tax + insurance);
 				
-				
-				//Converstion of int datatype to string to display it on the "JLabel";
+				//Converstion of int datatype to string to display it on the "JLabel" text;
 				lblNetResult.setText(String.valueOf(net));
 				lblGrossResult.setText(String.valueOf(gross));
-				
-			
-				
 			}
 		});
 		btnCompute.setBounds(269, 240, 86, 38);

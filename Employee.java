@@ -2,7 +2,6 @@ package EmployeeApp;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
@@ -15,14 +14,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class Employee {
-
 	public JFrame frmMotorPhEmployee;
-
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,13 +35,12 @@ public class Employee {
 	 * Create the application.
 	 */
 	public Employee() {
-		
 		initialize();
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
 	public void initialize() {
 		frmMotorPhEmployee = new JFrame();
 		frmMotorPhEmployee.setTitle("Motor PH: Employee App - Claricia, J. A.");
@@ -54,7 +49,6 @@ public class Employee {
 		frmMotorPhEmployee.getContentPane().setLayout(null);
 		
 		//Frame compositions (Labels, Button, Text Fields, etc.)
-		
 		JLabel lblNewLabel = new JLabel("Employee");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(31, 20, 226, 24);
@@ -123,24 +117,19 @@ public class Employee {
 		frmMotorPhEmployee.getContentPane().add(lblEmpPic);
 		
 		//Logout on click, backs to login frame
-		
 		JButton btnExit = new JButton("Logout");
 		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {	
 				LoginSystem login = new LoginSystem();
 				frmMotorPhEmployee.setVisible(false);
 				login.frmDfsf.setVisible(true);
-				
 			}
 		});
 		
 		btnExit.setBounds(149, 226, 108, 39);
 		frmMotorPhEmployee.getContentPane().add(btnExit);
 		
-		
-		//To payroll frame on click
-		
+		//To payroll frame on click	
 		JButton btnPayroll = new JButton("Payroll");
 		btnPayroll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,7 +141,6 @@ public class Employee {
 		
 		btnPayroll.setBounds(31, 226, 108, 39);
 		frmMotorPhEmployee.getContentPane().add(btnPayroll);
-		
 		frmMotorPhEmployee.setVisible(true);
 	}
 }

@@ -1,6 +1,7 @@
 package EmployeeApp;
 
 import java.awt.EventQueue;
+import java.text.DecimalFormat;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
@@ -16,6 +17,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Payroll {
+
 	public JFrame frmMotorPhEmployee;
 	private JTextField txtBasicSalary;
 	private JTextField txtClothing;
@@ -24,6 +26,7 @@ public class Payroll {
 	private JTextField txtBonus;
 	private JTextField txtTax;
 	private JTextField txtInsurance;
+
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +42,7 @@ public class Payroll {
 			}
 		});
 	}
+
 	/**
 	 * Create the application.
 	 */
@@ -50,10 +54,11 @@ public class Payroll {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		//Composition of frame (Label, Button, Text field, etc.)
 		frmMotorPhEmployee = new JFrame();
 		frmMotorPhEmployee.setTitle("Motor PH: Employee App - Claricia, J. A.");
-		frmMotorPhEmployee.setBounds(100, 100, 488, 334);
+		frmMotorPhEmployee.setBounds(100, 100, 510, 334);
 		frmMotorPhEmployee.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMotorPhEmployee.getContentPane().setLayout(null);
 		
@@ -87,7 +92,7 @@ public class Payroll {
 		frmMotorPhEmployee.getContentPane().add(separator_1);
 		
 		JLabel lblGross = new JLabel("Gross Salary : ");
-		lblGross.setBounds(269, 193, 101, 14);
+		lblGross.setBounds(269, 193, 87, 14);
 		frmMotorPhEmployee.getContentPane().add(lblGross);
 		
 		JLabel lblClothing = new JLabel("Clothing : ");
@@ -115,11 +120,11 @@ public class Payroll {
 		frmMotorPhEmployee.getContentPane().add(lblNet);
 		
 		JLabel lblNetResult = new JLabel("...");
-		lblNetResult.setBounds(356, 168, 46, 14);
+		lblNetResult.setBounds(356, 168, 99, 14);
 		frmMotorPhEmployee.getContentPane().add(lblNetResult);
 		
 		JLabel lblGrossResult = new JLabel("...");
-		lblGrossResult.setBounds(356, 193, 46, 14);
+		lblGrossResult.setBounds(356, 193, 99, 14);
 		frmMotorPhEmployee.getContentPane().add(lblGrossResult);
 		
 		txtBasicSalary = new JTextField();
@@ -127,7 +132,7 @@ public class Payroll {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
@@ -143,7 +148,7 @@ public class Payroll {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 					e.consume();
 				}
@@ -154,86 +159,77 @@ public class Payroll {
 		frmMotorPhEmployee.getContentPane().add(txtClothing);
 		txtClothing.setColumns(10);
 		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtPhone = new JTextField();
 		txtPhone.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
 		});
-		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtPhone.setBounds(119, 145, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtPhone);
 		txtPhone.setColumns(10);
 		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtRice = new JTextField();
 		txtRice.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
 		});
-		
 		txtRice.setBounds(119, 165, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtRice);
 		txtRice.setColumns(10);
 		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtBonus = new JTextField();
 		txtBonus.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
 		});
-		
 		txtBonus.setBounds(119, 190, 86, 20);
 		frmMotorPhEmployee.getContentPane().add(txtBonus);
 		txtBonus.setColumns(10);
 		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtTax = new JTextField();
+		txtTax.setText("(10%)");
 		txtTax.setForeground(Color.GRAY);
 		txtTax.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
 		});
-		
-		txtTax.setBounds(356, 105, 86, 20);
+		txtTax.setBounds(356, 105, 99, 20);
 		frmMotorPhEmployee.getContentPane().add(txtTax);
 		txtTax.setColumns(10);
 		
-		//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
 		txtInsurance = new JTextField();
+		txtInsurance.setText("(10%)");
 		txtInsurance.setForeground(Color.GRAY);
 		txtInsurance.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if(!Character.isDigit(c)) {
+				if(!Character.isDigit(c) && c != '.') {
 					e.consume();
 				}
 			}
 		});
-		
-		txtInsurance.setBounds(356, 125, 86, 20);
+		txtInsurance.setBounds(356, 125, 99, 20);
 		frmMotorPhEmployee.getContentPane().add(txtInsurance);
 		txtInsurance.setColumns(10);
 		
@@ -255,30 +251,41 @@ public class Payroll {
 		btnCompute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Converts textfields datatype to int for computation purposes
-				double basicSalary = Integer.parseInt(txtBasicSalary.getText());
-				double clothing = Integer.parseInt(txtClothing.getText());
-				double phone = Integer.parseInt(txtPhone.getText());
-				double rice = Integer.parseInt(txtRice.getText());
-				double bonus = Integer.parseInt(txtBonus.getText());
+				//Converts textfields datatype to int, computation purposes
+				double basicSalary = Double.parseDouble(txtBasicSalary.getText());
+				double clothing = Double.parseDouble(txtClothing.getText());
+				double phone = Double.parseDouble(txtPhone.getText());
+				double rice = Double.parseDouble(txtRice.getText());
+				double bonus = Double.parseDouble(txtBonus.getText());
 				
 				//Computations and conversions of String to Int datatype
-				double tax = Integer.parseInt(txtBasicSalary.getText()) * (0.10);
-				double insurance = Integer.parseInt(txtBasicSalary.getText()) * (0.10);	
 				
-				txtTax.setText(String.valueOf(tax));
-				txtInsurance.setText(String.valueOf(insurance));
+				//DecimalFormat class which is already included in java library. It is use to format decimal places
+				DecimalFormat df = new DecimalFormat("#.##");
 				
+				//Formats the output to 2 decimal places
+				double tax = Double.parseDouble(txtBasicSalary.getText()) * (0.10);
+				String taxDeci = df.format(tax);
+				double insurance = Double.parseDouble(txtBasicSalary.getText()) * (0.10);
+				String insuranceDeci = df.format(insurance);
+				
+				//Displays computed tax and insurance in "JTextField"
+				txtTax.setText(String.valueOf(taxDeci));
+				txtInsurance.setText(String.valueOf(insuranceDeci));
+				
+				//Formats the output to 2 decimal places
 				double net = basicSalary + clothing + phone + rice + bonus ;
+				String netDeci = df.format(net);
 				double gross = net - (tax + insurance);
+				String grossDeci = df.format(gross);
 				
-				//Converstion of int datatype to string to display it on the "JLabel" text;
-				lblNetResult.setText(String.valueOf(net));
-				lblGrossResult.setText(String.valueOf(gross));
+				//Converstion of int datatype to string to display it on the "JLabel";
+				lblNetResult.setText(String.valueOf(netDeci));
+				lblGrossResult.setText(String.valueOf(grossDeci));
+				
 			}
 		});
-		
-		btnCompute.setBounds(269, 240, 86, 38);
+		btnCompute.setBounds(284, 240, 86, 38);
 		frmMotorPhEmployee.getContentPane().add(btnCompute);
 		
 		//Reset all the text field to empty
@@ -290,11 +297,16 @@ public class Payroll {
 				txtPhone.setText(null);
 				txtRice.setText(null);
 				txtBonus.setText(null);
-				txtTax.setText(null);
-				txtInsurance.setText(null);
+				txtTax.setText("(10%)");
+				txtTax.setForeground(Color.GRAY);
+				txtInsurance.setText("(10%)");
+				txtInsurance.setForeground(Color.GRAY);
+				lblNetResult.setText("...");
+				lblGrossResult.setText("...");
+				
 			}
 		});
-		btnReset.setBounds(356, 240, 86, 38);
+		btnReset.setBounds(381, 240, 86, 38);
 		frmMotorPhEmployee.getContentPane().add(btnReset);
 	}
 }

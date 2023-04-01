@@ -48,7 +48,6 @@ public class LoginSystem {
 	 * Initialize the contents of the frame.
 	 */
 	
-	
 	public void initialize() {
 		
 		//Frame Compositions (Label, Button, Text Fields, etc.)
@@ -83,21 +82,16 @@ public class LoginSystem {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
-				BufferedReader reader = new BufferedReader(
-						new FileReader("C:\\Users\\clari\\Desktop\\computerProgramming2\\Login\\login.txt"));
-				String u;
-				boolean p;
-				
+				try (BufferedReader reader = new BufferedReader(
+						new FileReader("C:\\Users\\clari\\Desktop\\computerProgramming2\\Login\\login.txt"))) {
 				//Checks existing of login credentials from text 
-				if((u = reader.readLine()).equals(txtUsername.getText())) {
-					if(p = reader.readLine().equals(passwordField.getText())){
+				if((reader.readLine()).equals(txtUsername.getText())) {
+					if(reader.readLine().equals(passwordField.getText())){
 						JOptionPane.showMessageDialog(null, "Login Successful!");
 						frmDfsf.setVisible(false);
-						//Opens the Employee Application Window
 						Payroll pay = new Payroll ();
 						pay.frmMotorPhEmployee.setVisible(true);
-							if(!(p = reader.readLine().equals(passwordField.getText()))){
+							if(!(reader.readLine().equals(passwordField.getText()))){
 								JOptionPane.showMessageDialog(null, "Account not found.");
 							}
 						}else JOptionPane.showMessageDialog(null, "Account not found.");
@@ -107,6 +101,7 @@ public class LoginSystem {
 				}
 			}
 		});
+		
 		
 		btnNewButton.setBounds(206, 183, 89, 38);
 		frmDfsf.getContentPane().add(btnNewButton);

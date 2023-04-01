@@ -1,31 +1,51 @@
 package EmployeeApp;
 
 import java.awt.EventQueue;
-import java.text.DecimalFormat;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
+import java.io.*;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class Payroll {
 
 	public JFrame frmMotorPhEmployee;
+	private JLabel lblProfilePic;
 	private JTextField txtBasicSalary;
-	private JTextField txtClothing;
 	private JTextField txtPhone;
+	private JTextField txtClothing;
 	private JTextField txtRice;
 	private JTextField txtBonus;
-	private JTextField txtTax;
 	private JTextField txtInsurance;
+	private JTextField txtName;
+	private JTextField txtDepartment;
+	private JTextField txtEmail;
+	private JTextField txtAddress;
+	private JTextField txtContact;
+	private JTextField txtBirthday;
+	private JTextField txtTax;
+	private JTextField txtNet;
+	private JTextField txtGross;
 
 	/**
 	 * Launch the application.
@@ -58,261 +78,310 @@ public class Payroll {
 		//Composition of frame (Label, Button, Text field, etc.)
 		frmMotorPhEmployee = new JFrame();
 		frmMotorPhEmployee.setTitle("Motor PH: Employee App - Claricia, J. A.");
-		frmMotorPhEmployee.setBounds(100, 100, 510, 334);
+		frmMotorPhEmployee.setBounds(100, 100, 511, 349);
 		frmMotorPhEmployee.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMotorPhEmployee.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Payroll");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(23, 20, 144, 27);
-		frmMotorPhEmployee.getContentPane().add(lblNewLabel);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 59, 475, 194);
+		frmMotorPhEmployee.getContentPane().add(tabbedPane);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 63, 493, 9);
-		frmMotorPhEmployee.getContentPane().add(separator);
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Information", null, panel, null);
+		panel.setLayout(null);
 		
-		JLabel lblBasic = new JLabel("Basic Salary : ");
-		lblBasic.setBounds(23, 83, 86, 14);
-		frmMotorPhEmployee.getContentPane().add(lblBasic);
+		JLabel lblName = new JLabel("Name");
+		lblName.setBounds(10, 11, 63, 14);
+		panel.add(lblName);
 		
-		JLabel lblBonus = new JLabel("Bonus : ");
-		lblBonus.setBounds(23, 193, 56, 14);
-		frmMotorPhEmployee.getContentPane().add(lblBonus);
+		JLabel lblDepartment = new JLabel("Department");
+		lblDepartment.setBounds(10, 36, 81, 14);
+		panel.add(lblDepartment);
+		
+		JLabel lblAddress = new JLabel("Address");
+		lblAddress.setBounds(10, 86, 81, 14);
+		panel.add(lblAddress);
+		
+		lblProfilePic = new JLabel("Picture");
+		lblProfilePic.setBounds(315, 11, 150, 150);
+		panel.add(lblProfilePic);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(10, 61, 46, 14);
+		panel.add(lblEmail);
+		
+		JLabel lblContact = new JLabel("Contact");
+		lblContact.setBounds(10, 111, 63, 14);
+		panel.add(lblContact);
+		
+		JLabel lblBirthday = new JLabel("Birthday");
+		lblBirthday.setBounds(10, 136, 63, 14);
+		panel.add(lblBirthday);
+		
+		txtName = new JTextField();
+		txtName.setBounds(83, 8, 222, 20);
+		panel.add(txtName);
+		txtName.setColumns(10);
+		
+		txtDepartment = new JTextField();
+		txtDepartment.setColumns(10);
+		txtDepartment.setBounds(83, 33, 222, 20);
+		panel.add(txtDepartment);
+		
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(83, 58, 222, 20);
+		panel.add(txtEmail);
+		
+		txtAddress = new JTextField();
+		txtAddress.setColumns(10);
+		txtAddress.setBounds(83, 83, 222, 20);
+		panel.add(txtAddress);
+		
+		txtContact = new JTextField();
+		txtContact.setColumns(10);
+		txtContact.setBounds(83, 108, 222, 20);
+		panel.add(txtContact);
+		
+		txtBirthday = new JTextField();
+		txtBirthday.setColumns(10);
+		txtBirthday.setBounds(83, 133, 222, 20);
+		panel.add(txtBirthday);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Payroll", null, panel_1, null);
+		panel_1.setLayout(null);
+		
+		JLabel lblBasic = new JLabel("Basic Salary");
+		lblBasic.setBounds(10, 11, 91, 14);
+		panel_1.add(lblBasic);
 		
 		JLabel lblAllowance = new JLabel("Allowances");
-		lblAllowance.setBounds(23, 108, 86, 14);
-		frmMotorPhEmployee.getContentPane().add(lblAllowance);
+		lblAllowance.setBounds(10, 36, 72, 14);
+		panel_1.add(lblAllowance);
 		
-		JLabel lblDeductions = new JLabel("Deductions");
-		lblDeductions.setBounds(269, 83, 77, 14);
-		frmMotorPhEmployee.getContentPane().add(lblDeductions);
+		JLabel lblClothing = new JLabel("Clothing");
+		lblClothing.setBounds(20, 61, 62, 14);
+		panel_1.add(lblClothing);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 222, 493, 9);
-		frmMotorPhEmployee.getContentPane().add(separator_1);
+		JLabel lblPhone = new JLabel("Phone");
+		lblPhone.setBounds(20, 86, 46, 14);
+		panel_1.add(lblPhone);
 		
-		JLabel lblGross = new JLabel("Gross Salary : ");
-		lblGross.setBounds(269, 193, 87, 14);
-		frmMotorPhEmployee.getContentPane().add(lblGross);
+		JLabel lblRice = new JLabel("Rice Subsidy");
+		lblRice.setBounds(20, 111, 77, 14);
+		panel_1.add(lblRice);
 		
-		JLabel lblClothing = new JLabel("Clothing : ");
-		lblClothing.setBounds(33, 128, 76, 14);
-		frmMotorPhEmployee.getContentPane().add(lblClothing);
+		JLabel lblBonus = new JLabel("Bonus");
+		lblBonus.setBounds(10, 136, 72, 14);
+		panel_1.add(lblBonus);
 		
-		JLabel lblPhone = new JLabel("Phone :");
-		lblPhone.setBounds(33, 148, 67, 14);
-		frmMotorPhEmployee.getContentPane().add(lblPhone);
+		JLabel lblDeduction = new JLabel("Deductions");
+		lblDeduction.setBounds(249, 11, 72, 14);
+		panel_1.add(lblDeduction);
 		
-		JLabel lblRice = new JLabel("Rice : ");
-		lblRice.setBounds(33, 168, 46, 14);
-		frmMotorPhEmployee.getContentPane().add(lblRice);
+		JLabel lblInsurance = new JLabel("Insurance");
+		lblInsurance.setBounds(259, 36, 62, 14);
+		panel_1.add(lblInsurance);
 		
-		JLabel lblNewLabel_5 = new JLabel("Tax : ");
-		lblNewLabel_5.setBounds(279, 108, 67, 14);
-		frmMotorPhEmployee.getContentPane().add(lblNewLabel_5);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(231, 61, 9, 3);
+		panel_1.add(lblNewLabel_8);
 		
-		JLabel lblInsurance = new JLabel("Insurance :");
-		lblInsurance.setBounds(279, 128, 77, 14);
-		frmMotorPhEmployee.getContentPane().add(lblInsurance);
+		JLabel lblTax = new JLabel("Tax");
+		lblTax.setBounds(259, 61, 46, 14);
+		panel_1.add(lblTax);
 		
-		JLabel lblNet = new JLabel("Net Salary : ");
-		lblNet.setBounds(269, 168, 67, 14);
-		frmMotorPhEmployee.getContentPane().add(lblNet);
+		JLabel lblNet = new JLabel("Salary (Net)");
+		lblNet.setBounds(249, 86, 72, 14);
+		panel_1.add(lblNet);
 		
-		JLabel lblNetResult = new JLabel("...");
-		lblNetResult.setBounds(356, 168, 99, 14);
-		frmMotorPhEmployee.getContentPane().add(lblNetResult);
-		
-		JLabel lblGrossResult = new JLabel("...");
-		lblGrossResult.setBounds(356, 193, 99, 14);
-		frmMotorPhEmployee.getContentPane().add(lblGrossResult);
+		JLabel lblGross = new JLabel("Salary (Gross)");
+		lblGross.setBounds(246, 111, 91, 14);
+		panel_1.add(lblGross);
 		
 		txtBasicSalary = new JTextField();
-		txtBasicSalary.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
-		
-		txtBasicSalary.setBounds(119, 83, 86, 20);
-		frmMotorPhEmployee.getContentPane().add(txtBasicSalary);
+		txtBasicSalary.setBounds(111, 8, 118, 20);
+		panel_1.add(txtBasicSalary);
 		txtBasicSalary.setColumns(10);
 		
-		//This portion won't allow user to type a String on the textfield which requires a "Digit" or int datatype.
-		txtClothing = new JTextField();
-		txtClothing.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					//this consume means if the user type a "letter" it will not appear on the textfield, only numbers are valid input.
-					e.consume();
-				}
-			}
-		});
-		
-		txtClothing.setBounds(119, 125, 86, 20);
-		frmMotorPhEmployee.getContentPane().add(txtClothing);
-		txtClothing.setColumns(10);
-		
 		txtPhone = new JTextField();
-		txtPhone.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
-		
-		txtPhone.setBounds(119, 145, 86, 20);
-		frmMotorPhEmployee.getContentPane().add(txtPhone);
+		txtPhone.setBounds(111, 83, 118, 20);
+		panel_1.add(txtPhone);
 		txtPhone.setColumns(10);
 		
-		txtRice = new JTextField();
-		txtRice.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
+		txtClothing = new JTextField();
+		txtClothing.setBounds(111, 58, 118, 20);
+		panel_1.add(txtClothing);
+		txtClothing.setColumns(10);
 		
-		txtRice.setBounds(119, 165, 86, 20);
-		frmMotorPhEmployee.getContentPane().add(txtRice);
+		txtRice = new JTextField();
+		txtRice.setBounds(111, 108, 118, 20);
+		panel_1.add(txtRice);
 		txtRice.setColumns(10);
 		
 		txtBonus = new JTextField();
-		txtBonus.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
-		
-		txtBonus.setBounds(119, 190, 86, 20);
-		frmMotorPhEmployee.getContentPane().add(txtBonus);
+		txtBonus.setBounds(111, 133, 118, 20);
+		panel_1.add(txtBonus);
 		txtBonus.setColumns(10);
 		
-		txtTax = new JTextField();
-		txtTax.setText("(10%)");
-		txtTax.setForeground(Color.GRAY);
-		txtTax.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
-		
-		txtTax.setBounds(356, 105, 99, 20);
-		frmMotorPhEmployee.getContentPane().add(txtTax);
-		txtTax.setColumns(10);
-		
 		txtInsurance = new JTextField();
-		txtInsurance.setText("(10%)");
-		txtInsurance.setForeground(Color.GRAY);
-		txtInsurance.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if(!Character.isDigit(c) && c != '.') {
-					e.consume();
-				}
-			}
-		});
-		
-		txtInsurance.setBounds(356, 125, 99, 20);
-		frmMotorPhEmployee.getContentPane().add(txtInsurance);
+		txtInsurance.setBounds(347, 33, 118, 20);
+		panel_1.add(txtInsurance);
 		txtInsurance.setColumns(10);
 		
-		//This profile button will close the Payroll frame and open the Employee frame
-		JButton btnProfile = new JButton("Profile");
-		btnProfile.addActionListener(new ActionListener() {
+		txtTax = new JTextField();
+		txtTax.setColumns(10);
+		txtTax.setBounds(347, 58, 118, 20);
+		panel_1.add(txtTax);
+		
+		txtNet = new JTextField();
+		txtNet.setColumns(10);
+		txtNet.setBounds(347, 83, 118, 20);
+		panel_1.add(txtNet);
+		
+		txtGross = new JTextField();
+		txtGross.setColumns(10);
+		txtGross.setBounds(347, 108, 118, 20);
+		panel_1.add(txtGross);
+		
+		JLabel lblEmployeeName = new JLabel("Employee No.");
+		lblEmployeeName.setBounds(10, 26, 101, 14);
+		frmMotorPhEmployee.getContentPane().add(lblEmployeeName);
+		
+		//Logouts the Employee Window and brings back the Login Window
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Employee emp = new Employee();
+				LoginSystem login = new LoginSystem();
 				frmMotorPhEmployee.setVisible(false);
-				emp.frmMotorPhEmployee.setVisible(true);
+				login.frmDfsf.setVisible(true);	
 			}
 		});
 		
-		btnProfile.setBounds(23, 240, 86, 38);
-		frmMotorPhEmployee.getContentPane().add(btnProfile);
+		btnLogout.setBounds(376, 264, 109, 35);
+		frmMotorPhEmployee.getContentPane().add(btnLogout);
 		
-		//Computation of Net and Gross Salary
-		JButton btnCompute = new JButton("Compute");
-		btnCompute.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//Converts textfields datatype to int, computation purposes
-				double basicSalary = Double.parseDouble(txtBasicSalary.getText());
-				double clothing = Double.parseDouble(txtClothing.getText());
-				double phone = Double.parseDouble(txtPhone.getText());
-				double rice = Double.parseDouble(txtRice.getText());
-				double bonus = Double.parseDouble(txtBonus.getText());
-				
-				//Computations and conversions of String to Int datatype
-				
-				//DecimalFormat class which is already included in java library. It is use to format decimal places
-				DecimalFormat df = new DecimalFormat("#.##");
-				
-				//Formats the output to 2 decimal places
-				double tax = Double.parseDouble(txtBasicSalary.getText()) * (0.10);
-				String taxDeci = df.format(tax);
-				double insurance = Double.parseDouble(txtBasicSalary.getText()) * (0.10);
-				String insuranceDeci = df.format(insurance);
-				
-				//Displays computed tax and insurance in "JTextField"
-				txtTax.setText(String.valueOf(taxDeci));
-				txtInsurance.setText(String.valueOf(insuranceDeci));
-				
-				//Formats the output to 2 decimal places
-				double net = basicSalary + clothing + phone + rice + bonus ;
-				String netDeci = df.format(net);
-				double gross = net - (tax + insurance);
-				String grossDeci = df.format(gross);
-				
-				//Converstion of int datatype to string to display it on the "JLabel";
-				lblNetResult.setText(String.valueOf(netDeci));
-				lblGrossResult.setText(String.valueOf(grossDeci));
-				
-			}
+		//Reads the textfile from local directory
+		JComboBox<String> comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(comboBox.getSelectedItem().equals("1111")) {
+					try {
+						BufferedReader reader = new BufferedReader(
+								new FileReader("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Files\\1111.txt"));
+						
+						//Reads the text file per line and outputs per line to their respective textfields
+						String name = reader.readLine();
+						txtName.setText(name);
+						String department = reader.readLine();
+						txtDepartment.setText(department);
+						String email = reader.readLine();
+						txtEmail.setText(email);
+						String address = reader.readLine();
+						txtAddress.setText(address);
+						String contact = reader.readLine();
+						txtContact.setText(contact);
+						String birthday = reader.readLine();
+						txtBirthday.setText(birthday);
+						String basic = reader.readLine();
+						txtBasicSalary.setText(basic);
+						String clothing = reader.readLine();
+						txtClothing.setText(clothing);
+						String phone = reader.readLine();
+						txtPhone.setText(phone);
+						String rice = reader.readLine();
+						txtRice.setText(rice);
+						String bonus = reader.readLine();
+						txtBonus.setText(bonus);
+						String insurance = reader.readLine();
+						txtInsurance.setText(insurance);
+						String tax = reader.readLine();
+						txtTax.setText(tax);
+						String net = reader.readLine();
+						txtNet.setText(net);
+						String gross = reader.readLine();
+						txtGross.setText(gross);									
+						reader.close();
+						
+						lblProfilePic.setIcon(new ImageIcon("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Icons\\male.png"));					
+	
+					}catch(IOException ex) {
+						JOptionPane.showMessageDialog(null,"File not found");
+					}
+				}else if(comboBox.getSelectedItem().equals("2222")) {
+					try {
+						BufferedReader reader = new BufferedReader(
+								new FileReader("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Files\\2222.txt"));
+						
+						//Reads the text file per line and outputs per line to their respective textfields
+						String name = reader.readLine();
+						txtName.setText(name);
+						String department = reader.readLine();
+						txtDepartment.setText(department);
+						String email = reader.readLine();
+						txtEmail.setText(email);
+						String address = reader.readLine();
+						txtAddress.setText(address);
+						String contact = reader.readLine();
+						txtContact.setText(contact);
+						String birthday = reader.readLine();
+						txtBirthday.setText(birthday);
+						String basic = reader.readLine();
+						txtBasicSalary.setText(basic);
+						String clothing = reader.readLine();
+						txtClothing.setText(clothing);
+						String phone = reader.readLine();
+						txtPhone.setText(phone);
+						String rice = reader.readLine();
+						txtRice.setText(rice);
+						String bonus = reader.readLine();
+						txtBonus.setText(bonus);
+						String insurance = reader.readLine();
+						txtInsurance.setText(insurance);
+						String tax = reader.readLine();
+						txtTax.setText(tax);
+						String net = reader.readLine();
+						txtNet.setText(net);
+						String gross = reader.readLine();
+						txtGross.setText(gross);									
+						reader.close();
+						
+						lblProfilePic.setIcon(new ImageIcon("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Icons\\female.png"));
+						BufferedImage image = ImageIO.read(new File("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Icons\\female.png"));
+								
+					}catch(IOException ex) {
+						JOptionPane.showMessageDialog(null,"File not found");
+					}		
+				}else if(comboBox.getSelectedItem().equals("....")) {
+					
+					//Sets the textfields to empty
+					txtName.setText("....");
+					txtDepartment.setText("....");
+					txtEmail.setText("....");
+					txtAddress.setText("....");
+					txtContact.setText("....");
+					txtBirthday.setText(".....");
+					txtBasicSalary.setText(".....");
+					txtClothing.setText(".....");
+					txtPhone.setText(".....");
+					txtRice.setText(".....");
+					txtBonus.setText(".....");
+					txtInsurance.setText(".....");
+					txtTax.setText(".....");
+					txtNet.setText(".....");
+					txtGross.setText(".....");
+					lblProfilePic.setIcon(new ImageIcon("C:\\Users\\clari\\eclipse-workspace\\EmployeeApp2\\src\\Icons\\blank.png"));
+				}
+			}			
 		});
 		
-		btnCompute.setBounds(284, 240, 86, 38);
-		frmMotorPhEmployee.getContentPane().add(btnCompute);
-		
-		//Reset all the text field to empty
-		JButton btnReset = new JButton("Reset");
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txtBasicSalary.setText(null);
-				txtClothing.setText(null);
-				txtPhone.setText(null);
-				txtRice.setText(null);
-				txtBonus.setText(null);
-				txtTax.setText("(10%)");
-				txtTax.setForeground(Color.GRAY);
-				txtInsurance.setText("(10%)");
-				txtInsurance.setForeground(Color.GRAY);
-				lblNetResult.setText("...");
-				lblGrossResult.setText("...");	
-			}
-		});
-		
-		btnReset.setBounds(381, 240, 86, 38);
-		frmMotorPhEmployee.getContentPane().add(btnReset);
+		comboBox.setToolTipText("");
+		comboBox.setBounds(88, 22, 67, 22);
+		comboBox.addItem("....");
+		comboBox.addItem("1111");
+		comboBox.addItem("2222");
+		frmMotorPhEmployee.getContentPane().add(comboBox);
+	
 	}
 }

@@ -16,9 +16,11 @@ import javax.swing.JToggleButton;
 import javax.swing.JCheckBox;
 
 public class LoginSystem {
+
 	public JFrame frmDfsf;
 	private JTextField txtUsername;
 	private JPasswordField passwordField;
+
 	/**
 	 * Launch the application.
 	 */
@@ -41,12 +43,16 @@ public class LoginSystem {
 	public LoginSystem() {
 		initialize();
 	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	
 	public void initialize() {
 		
 		//Frame Compositions (Label, Button, Text Fields, etc.)
+		
 		frmDfsf = new JFrame();
 		frmDfsf.setTitle("Motor PH: Employee App - Claricia, J. A.");
 		frmDfsf.setBounds(200, 200, 500, 300);
@@ -71,22 +77,26 @@ public class LoginSystem {
 		frmDfsf.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		//Read file from text upon click
 		JButton btnNewButton = new JButton("Login");
+		
+		//Read file from text upon click
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
+			public void actionPerformed(ActionEvent e) {
+				
 				try {
 				BufferedReader reader = new BufferedReader(
 						new FileReader("C:\\Users\\clari\\Desktop\\computerProgramming2\\Login\\login.txt"));
 				String u;
 				boolean p;
-	
+				
 				//Checks existing of login credentials from text 
 				if((u = reader.readLine()).equals(txtUsername.getText())) {
 					if(p = reader.readLine().equals(passwordField.getText())){
 						JOptionPane.showMessageDialog(null, "Login Successful!");
 						frmDfsf.setVisible(false);
-						Employee emp = new Employee ();
+						//Opens the Employee Application Window
+						Payroll pay = new Payroll ();
+						pay.frmMotorPhEmployee.setVisible(true);
 							if(!(p = reader.readLine().equals(passwordField.getText()))){
 								JOptionPane.showMessageDialog(null, "Account not found.");
 							}
@@ -113,10 +123,12 @@ public class LoginSystem {
 		btnNewButton_1.setBounds(334, 183, 89, 38);
 		frmDfsf.getContentPane().add(btnNewButton_1);
 		
+		JButton btnNewButton_2 = new JButton("Register");
+		
 		//Writes a text on a local directory to save login credentials
-		JButton btnNewButton_2 = new JButton("Register");		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				if(txtUsername.getText().equals("") || passwordField.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Invalid Username/Password.");
 				}else {

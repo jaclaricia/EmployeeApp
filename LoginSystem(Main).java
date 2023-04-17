@@ -48,6 +48,7 @@ public class LoginSystem {
 	 * Initialize the contents of the frame.
 	 */
 	
+	
 	public void initialize() {
 		
 		//Frame Compositions (Label, Button, Text Fields, etc.)
@@ -101,7 +102,6 @@ public class LoginSystem {
 				}
 			}
 		});
-		
 		
 		btnNewButton.setBounds(206, 183, 89, 38);
 		frmDfsf.getContentPane().add(btnNewButton);
